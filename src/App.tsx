@@ -1,7 +1,8 @@
 import React, {FC, useState, ChangeEvent} from 'react';
 import './App.css';
 import {ITask} from './Interfaces';
-import {nanoid} from 'nanoid'
+import {nanoid} from 'nanoid';
+import SingleTask from './components/SingleTask';
 
 const App: FC = () => {
   const [task, setTask] = useState<string>('')
@@ -32,7 +33,9 @@ const App: FC = () => {
         <button onClick={addTask}>Add Task</button>
       </div>
       <div className="todoList">
-
+        {list.map((task: ITask)=> {
+              return <SingleTask task={task} key={task.id} />
+          })}
       </div>
     </div>
   );
